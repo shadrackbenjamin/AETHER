@@ -1,0 +1,139 @@
+/* Theme variables */
+:root {
+  --brand-pink: #ff2ea1;
+  --brand-orange: #ff9800;
+  --brand-deep: #0c0b34;
+  --text-on-dark: #f7f7fb;
+  --card-bg: rgba(12, 11, 52, 0.7);
+  --card-border: rgba(255, 255, 255, 0.08);
+}
+
+/* Reset-ish */
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--text-on-dark);
+  background: var(--brand-deep);
+  background-image: linear-gradient(rgba(12,11,52,0.85), rgba(12,11,52,0.93)), url('/assets/beme-background.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; }
+
+/* App shell */
+.app-container {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.app-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+}
+.app-card {
+  width: 100%;
+  max-width: 980px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+}
+.header .logo {
+  height: 40px;
+  width: 40px;
+  border-radius: 8px;
+  background: radial-gradient(circle at 30% 30%, var(--brand-orange), var(--brand-pink));
+}
+.header .title {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+.header .title .name { font-weight: 800; letter-spacing: 0.2px; }
+.header .title .tag { color: #d6d6e8; font-size: 12px; }
+
+/* Bottom nav */
+.bottom-nav {
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  background: rgba(12, 11, 52, 0.9);
+  border-top: 1px solid var(--card-border);
+  backdrop-filter: blur(10px);
+}
+.bottom-nav .rail {
+  margin: 0 auto;
+  max-width: 980px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+.bottom-nav a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 10px 8px;
+  font-size: 12px;
+  color: #eaeaf6;
+  opacity: 0.8;
+}
+.bottom-nav a.active, .bottom-nav a:hover { opacity: 1; color: white; }
+
+/* Forms */
+.input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+  background: rgba(255,255,255,0.05);
+  color: var(--text-on-dark);
+}
+.btn {
+  background: linear-gradient(90deg, var(--brand-pink), var(--brand-orange));
+  color: white;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-weight: 700;
+}
+.btn.secondary { background: rgba(255,255,255,0.08); }
+
+/* Chat */
+.chat-wrapper { display: flex; flex-direction: column; gap: 12px; height: 70vh; }
+.chat-stream { flex: 1; overflow: auto; display: flex; flex-direction: column; gap: 10px; padding-right: 4px; }
+.msg { display: flex; gap: 10px; align-items: flex-start; }
+.avatar { width: 36px; height: 36px; border-radius: 50%; overflow: hidden; background: #1b1a45; display: grid; place-items: center; }
+.avatar img { width: 100%; height: 100%; object-fit: cover; }
+.bubble { padding: 10px 12px; border-radius: 14px; background: rgba(255,255,255,0.07); border: 1px solid var(--card-border); max-width: 80%; }
+.bubble.me { background: rgba(255,255,255,0.12); margin-left: auto; }
+.quick-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.quick-actions .chip { padding: 8px 10px; border-radius: 999px; background: rgba(255,255,255,0.08); border: 1px solid var(--card-border); font-size: 12px; }
+
+/* Lists */
+.grid { display: grid; grid-template-columns: repeat(1, minmax(0, 1fr)); gap: 12px; }
+@media (min-width: 700px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.card { padding: 12px; border-radius: 12px; border: 1px solid var(--card-border); background: rgba(255,255,255,0.04); }
+.card h4 { margin: 0 0 6px; }
+.badge { display: inline-block; padding: 4px 8px; border-radius: 999px; background: rgba(255,255,255,0.1); font-size: 12px; }
+
+/* Accordion */
+.faq-item { border-bottom: 1px solid var(--card-border); }
+.faq-item summary { cursor: pointer; padding: 12px 0; font-weight: 600; }
+.faq-item p { margin: 0 0 14px 0; color: #e6e6f4; }
